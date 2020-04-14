@@ -1,0 +1,27 @@
+{
+  "name": "journal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/journal/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -r dist/; webpack --mode development --config webpack.config.js; chmod +x ./dist/journal"
+  },
+  "bin": {
+    "journal": "./dist/journal/index.js"
+  },
+  "author": "Austin Happel",
+  "license": "ISC",
+  "dependencies": {
+    "date-fns": "^2.11.1",
+    "handlebars": "^4.7.6",
+    "inquirer": "^7.1.0",
+    "prettier": "^2.0.4",
+    "shebang-loader": "0.0.1"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^5.1.1",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
