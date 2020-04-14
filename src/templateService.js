@@ -33,12 +33,13 @@ const getPreviousTemplate = async targetFilePath => {
   // Generate date filenames starting with the day before yesterday,
   // keep going down until you get a hit. Stop if we've exhausted all files
   // or we find a hit.
+  const entryPath = path.join(config.journalRootPath, config.entryDirectoryName);
   const entries = fs.readdirSync(entryPath);
   let mostRecentEntryDate;
   let mostRecentEntryFilename;
   const now = Date.now();
   for (let i = 0; i < entries.length; i++) {
-    mostRecentEntryDate = getOrderedDate(sub(now, { days: i + 2 }));
+    mostRecentEntryDate = getOrderedDate(sub(now, { days: i + 1 }));
     let fileName = `${mostRecentEntryDate}.md`;
     let entryIndex = entries.indexOf(fileName);
     if (entryIndex > -1) {
