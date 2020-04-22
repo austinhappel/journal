@@ -3,7 +3,11 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const { spawn } = require('child_process');
-const { getConfig, defaultConfig } = require('./configService.js');
+const {
+  validateConfiguredFolders,
+  getConfig,
+  defaultConfig,
+} = require('./configService.js');
 const templateService = require('./templateService.js');
 const { getFilenameDate } = require('./dateService.js');
 const { doesFileExist, isFileWriteable } = require('./fileService.js');
@@ -17,6 +21,10 @@ const { doesFileExist, isFileWriteable } = require('./fileService.js');
 
 const cliArguments = process.argv.slice(2);
 const config = getConfig();
+
+// validate paths in config before sharing config.
+// TODO: this could probably be put in a separate service.
+validateConfiguredFolders(config);
 
 const getFlags = cliArguments => {
   let currentFlag;
@@ -66,12 +74,12 @@ const requestTemplate = async () => {
       },
     ])
     .then(answers => {
-      if (answers.template === 'yesterday') {
-        // TODO: find yesterday's journal entry
-      } else {
-        // TODO: 1. check if today's entry exists, create today's journal entry if it does not
-        //
-      }
+      //if (answers.template === 'yesterday') {
+      // TODO: find yesterday's journal entry
+      // } else {
+      // TODO: 1. check if today's entry exists, create today's journal entry if it does not
+      //
+      //}
       return answers.template;
     });
 };
