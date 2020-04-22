@@ -10,7 +10,7 @@ const {
 } = require('./configService.js');
 const templateService = require('./templateService.js');
 const { getFilenameDate } = require('./dateService.js');
-const { doesFileExist, isFileWriteable } = require('./fileService.js');
+const { doesFileExist, isFileWriteable } = require('./utils/fileUtils.js');
 
 // Ideal folder structure
 // Journal/

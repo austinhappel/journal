@@ -10,7 +10,7 @@ const {
   getFormalDateFromOrderedDate,
 } = require('./dateService.js');
 const { getConfig } = require('./configService.js');
-const { doesFileExist } = require('./fileService.js');
+const { doesFileExist } = require('./utils/fileUtils.js');
 const config = getConfig();
 
 const findTemplateFiles = templatePath => {

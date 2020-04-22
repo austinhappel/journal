@@ -1,0 +1,12 @@
+{
+  "journalRootPath": "~/Documents/Journal-test",
+  "templateDirectoryName": "templates",
+  "entryDirectoryName": "entries",
+  "editor": {
+    "command": "nvim",
+    "processSettings": {
+      "stdio": "inherit",
+      "shell": true
+    }
+  }
+}
