@@ -22,10 +22,6 @@ const { doesFileExist, isFileWriteable } = require('./utils/fileUtils.js');
 const cliArguments = process.argv.slice(2);
 const config = getConfig();
 
-// validate paths in config before sharing config.
-// TODO: this could probably be put in a separate service.
-validateConfiguredFolders(config);
-
 const getFlags = cliArguments => {
   let currentFlag;
   return cliArguments.reduce((flags, argument) => {
@@ -141,6 +137,10 @@ Make sure the full .editor object is included in your settings.`);
 
 // Start the app
 const init = async () => {
+  // validate paths in config before sharing config.
+  // TODO: this could probably be put in a separate service.
+  await validateConfiguredFolders(config);
+
   const flags = getFlags(cliArguments);
   const todaysJournalFilePath = getTodaysJournalEntryFilePath();
   if (doesFileExist(todaysJournalFilePath)) {
